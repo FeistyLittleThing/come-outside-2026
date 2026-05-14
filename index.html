@@ -283,11 +283,17 @@
     .hero-pre {
       font-family: var(--display);
       font-size: clamp(0.72rem, 2vw, 0.88rem);
-      letter-spacing: 0.5em;
+      letter-spacing: 0.3em;
       color: var(--mustard);
       margin-bottom: 1.75rem;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
     }
+    .hero-pre .pre-star { flex-shrink: 0; }
+    .hero-pre .pre-text { white-space: nowrap; }
 
     h1 {
       font-family: var(--display);
@@ -754,7 +760,13 @@
 <section id="home">
   <div class="sunburst" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="hero-pre">★ &nbsp; August 1, 2026 &nbsp;·&nbsp; Gaston, Oregon &nbsp; ★</span>
+    <span class="hero-pre">
+      <span class="pre-star">★</span>
+      <span class="pre-text">August 1, 2026</span>
+      <span class="pre-star">·</span>
+      <span class="pre-text">Gaston, Oregon</span>
+      <span class="pre-star">★</span>
+    </span>
     <h1>
       Raised on<br>
       <span class="c-orange">Hosewater</span><br>
