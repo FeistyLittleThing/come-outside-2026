@@ -679,6 +679,10 @@
   <p class="footer-love">Made with love for Shannon's 50th</p>
 </footer>
 
+<!-- Hidden form for Apps Script submission -->
+<iframe name="submit-iframe" id="submit-iframe" style="display:none"></iframe>
+<form id="submit-form" action="" method="POST" target="submit-iframe" style="display:none"></form>
+
 <!-- ════════════════════════════════════════════ UNIT LISTING MODAL ══ -->
 <div class="modal-overlay" id="unit-modal" role="dialog" aria-modal="true" aria-labelledby="unit-modal-title">
   <div class="modal">
@@ -707,6 +711,7 @@
 <script>
   // ── Replace this URL after deploying your Apps Script ──────────────
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrmUTsKNJawS-fVTJJ1Opfv0ze9g7DymoK_k2heaD76a_J5Hiu3weI-b5IGSVy5HJy/exec';
+  document.getElementById('submit-form').action = SCRIPT_URL;
   // ───────────────────────────────────────────────────────────────────
 
   // ── Accommodation data ───────────────────────────────────────────────
@@ -826,10 +831,22 @@
     document.getElementById('booking-modal').classList.remove('open');
   }
 
-  // ── Form submission ──────────────────────────────────────────────────
-  async function submitToSheets(payload) {
-    const body = new URLSearchParams(payload).toString();
-    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+  // ── Form submission via hidden iframe (avoids Apps Script redirect/CORS issues) ──
+  function submitToSheets(payload) {
+    return new Promise(resolve => {
+      const iframe = document.getElementById('submit-iframe');
+      const form   = document.getElementById('submit-form');
+      form.innerHTML = '';
+      Object.entries(payload).forEach(([k, v]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden'; input.name = k; input.value = v || '';
+        form.appendChild(input);
+      });
+      iframe.onload = () => resolve();
+      form.submit();
+      // Resolve after 3s regardless, in case onload doesn't fire
+      setTimeout(resolve, 3000);
+    });
   }
 
   async function handleBookingSubmit(e) {
