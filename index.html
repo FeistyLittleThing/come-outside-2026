@@ -831,21 +831,13 @@
     document.getElementById('booking-modal').classList.remove('open');
   }
 
-  // ── Form submission via hidden iframe (avoids Apps Script redirect/CORS issues) ──
+  // ── Form submission via GET into hidden iframe (most reliable with Apps Script) ──
   function submitToSheets(payload) {
     return new Promise(resolve => {
       const iframe = document.getElementById('submit-iframe');
-      const form   = document.getElementById('submit-form');
-      form.innerHTML = '';
-      Object.entries(payload).forEach(([k, v]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden'; input.name = k; input.value = v || '';
-        form.appendChild(input);
-      });
       iframe.onload = () => resolve();
-      form.submit();
-      // Resolve after 3s regardless, in case onload doesn't fire
-      setTimeout(resolve, 3000);
+      iframe.src = SCRIPT_URL + '?' + new URLSearchParams(payload).toString();
+      setTimeout(resolve, 4000);
     });
   }
 
