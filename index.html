@@ -523,12 +523,12 @@
         <div class="card-price">$100</div>
         <div class="card-cta">View &amp; Book →</div>
       </div>
-      <a href="#rsvp" class="card" style="text-decoration:none;">
+      <div class="card cat-card" data-category="camping">
         <div class="card-name">Camping</div>
         <div class="card-avail">Plenty of space</div>
         <div class="card-price free">Free</div>
         <div class="card-cta">RSVP below →</div>
-      </a>
+      </div>
     </div>
 
     <div class="venmo-note">
@@ -896,7 +896,13 @@
 
   // ── Category card clicks ─────────────────────────────────────────────
   document.querySelectorAll('.cat-card').forEach(card => {
-    card.addEventListener('click', () => openUnitModal(card.dataset.category));
+    card.addEventListener('click', () => {
+      if (card.dataset.category === 'camping') {
+        document.getElementById('rsvp').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        openUnitModal(card.dataset.category);
+      }
+    });
   });
 
   // ── Close modals ─────────────────────────────────────────────────────
