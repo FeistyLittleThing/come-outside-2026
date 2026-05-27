@@ -372,6 +372,19 @@
     .unit-name { font-family: var(--display); font-size: 1.3rem; font-weight: 400; font-synthesis: none; letter-spacing: 0.06em; color: var(--mustard); }
     .unit-desc { font-size: 0.88rem; line-height: 1.6; opacity: 0.85; flex: 1; }
     .unit-price { font-family: var(--display); font-size: 1.6rem; font-weight: 400; font-synthesis: none; color: var(--orange); }
+    .unit-card { position: relative; overflow: hidden; }
+    .unit-stamp {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg);
+      font-family: var(--display); font-size: 2rem; font-weight: 400; font-synthesis: none;
+      letter-spacing: 0.2em; color: var(--rust);
+      border: 4px solid var(--rust); border-radius: 4px;
+      padding: 0.3rem 0.75rem; opacity: 0.85; pointer-events: none;
+      white-space: nowrap; z-index: 2;
+      text-shadow: 1px 1px 0 rgba(166,61,47,0.3);
+    }
+    .unit-card.is-reserved { opacity: 0.7; }
+    .unit-card.is-reserved .unit-book-btn { opacity: 0.3; pointer-events: none; cursor: not-allowed; }
     .unit-book-btn {
       background: var(--mustard); color: var(--brown); border: none;
       font-family: var(--display); font-size: 0.95rem; font-weight: 400; font-synthesis: none;
@@ -764,7 +777,7 @@
         { id: 'Room 2', desc: 'A solid night\'s sleep indoors. Shared bathroom, cozy space, and no tent stakes required.' },
         { id: 'Room 3', desc: 'Lodge room with a real bed. Shared bathroom. A short stumble from the party.' },
         { id: 'Room 4', desc: 'Comfortable room with a bed and four walls. Shared bathroom. A short stumble from the party.' },
-        { id: 'Room 5', desc: 'The last lodge room. Comfortable, warm, and as fancy as it gets out here. Private bathroom. Get real, Shannon took this already.' },
+        { id: 'Room 5', desc: 'The last lodge room. Comfortable, warm, and as fancy as it gets out here. Private bathroom. Get real, Shannon took this already.', reserved: true },
       ]
     },
     airstream: {
@@ -787,7 +800,8 @@
     document.getElementById('unit-modal-title').textContent = data.title;
     document.getElementById('unit-modal-intro').textContent = data.intro;
     document.getElementById('unit-grid').innerHTML = data.items.map(item => `
-      <div class="unit-card">
+      <div class="unit-card${item.reserved ? ' is-reserved' : ''}">
+        ${item.reserved ? '<div class="unit-stamp">RESERVED</div>' : ''}
         <div class="unit-name">${item.id}</div>
         <div class="unit-desc">${item.desc}</div>
         <div class="unit-price">${data.price}</div>
