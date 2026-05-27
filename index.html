@@ -225,6 +225,15 @@
     .directions-text strong { color: var(--mustard); font-weight: 600; }
     .map-wrap { border: 4px solid var(--mustard); border-radius: 3px; overflow: hidden; margin-bottom: 2.75rem; }
     .map-wrap iframe { display: block; width: 100%; height: 380px; border: none; filter: sepia(15%) saturate(85%) contrast(95%); }
+    .heads-up-strip {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.75rem;
+    }
+    .heads-up-strip span {
+      background: rgba(61,43,31,0.25); border: 2px solid rgba(61,43,31,0.4);
+      border-radius: 2px; padding: 0.5rem 1rem; font-family: var(--display);
+      font-size: 1rem; font-weight: 400; font-synthesis: none;
+      letter-spacing: 0.08em; color: var(--cream);
+    }
     .bring-heading { font-family: var(--display); font-size: 1.6rem; font-weight: 400; font-synthesis: none; letter-spacing: 0.12em; color: var(--mustard); margin-bottom: 1rem; }
     .bring-tags { display: flex; flex-wrap: wrap; gap: 0.65rem; }
     .bring-tag {
@@ -552,8 +561,15 @@
     <p class="directions-text">
       Dundee Lodge is located in the Oregon wine country hills, about 30 miles southwest of Portland.<br><br>
       <strong>Address:</strong> 50845 SW Dundee Rd, Gaston OR 97119<br><br>
-      <strong>From Portland:</strong> Head southwest on Hwy 99W through Newberg and Dundee, then follow signs toward Gaston. About 45 minutes from Portland depending on traffic. Plenty of parking on site for whatever you're driving.
+      <strong>From Portland:</strong> Head southwest on Hwy 99W through Newberg and Dundee, then follow signs toward Gaston. About 45 minutes from Portland depending on traffic. Plenty of parking on site for whatever you're driving.<br><br>
+      <strong>Heads up:</strong> The last mile of road is gravel — slow down and mind the neighbors. There is little to no cell service at the venue and the wifi is limited and not reliable. Plan accordingly and let people know where you'll be.
     </p>
+    <div class="heads-up-strip">
+      <span>🚫 No dogs</span>
+      <span>🚫 No children</span>
+      <span>📵 No cell service</span>
+      <span>🪨 Gravel road — drive slow</span>
+    </div>
     <div class="map-wrap">
       <iframe src="https://maps.google.com/maps?q=50845+SW+Dundee+Rd,+Gaston,+OR+97119&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Dundee Lodge" allowfullscreen></iframe>
     </div>
