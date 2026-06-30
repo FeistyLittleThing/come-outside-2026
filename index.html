@@ -244,6 +244,61 @@
     .bring-tag:hover { background: rgba(245,240,232,0.2); }
 
     /* ══════════════════════════════════════════════════════
+       PHOTO BOOTH
+    ══════════════════════════════════════════════════════ */
+    #photo-booth {
+      background: var(--brown); color: var(--cream);
+      background-image: radial-gradient(ellipse at 80% 20%, rgba(232,160,32,0.08) 0%, transparent 55%),
+                        radial-gradient(ellipse at 10% 85%, rgba(196,81,31,0.1) 0%, transparent 50%);
+    }
+    #photo-booth .eyebrow { color: var(--mustard); opacity: 1; }
+    #photo-booth h2 { color: var(--cream); }
+    .booth-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .booth-text p {
+      font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; opacity: 0.9;
+    }
+    .booth-features {
+      list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2rem;
+    }
+    .booth-features li {
+      display: flex; align-items: baseline; gap: 0.65rem;
+      font-family: var(--display); font-size: 1.05rem; letter-spacing: 0.05em;
+    }
+    .booth-features li::before { content: '◆'; color: var(--mustard); font-size: 0.6rem; flex-shrink: 0; position: relative; top: -1px; }
+    .booth-link {
+      display: inline-block; font-family: var(--display); font-size: 1rem;
+      letter-spacing: 0.15em; color: var(--mustard); border: 2px solid var(--mustard);
+      padding: 0.55rem 1.4rem; border-radius: 2px; text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .booth-link:hover { background: var(--mustard); color: var(--brown); }
+    .booth-images { display: flex; flex-direction: column; gap: 1.25rem; }
+    .booth-logo-wrap {
+      background: var(--cream); border-radius: 3px; padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      border: 3px solid var(--mustard);
+    }
+    .booth-logo-wrap img { max-width: 220px; width: 100%; display: block; }
+    .booth-trailer-wrap {
+      border: 3px solid rgba(245,240,232,0.2); border-radius: 3px; overflow: hidden;
+    }
+    .booth-trailer-wrap img { width: 100%; display: block; }
+    @media (max-width: 720px) {
+      .booth-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .booth-images { flex-direction: row; }
+      .booth-logo-wrap { flex: 1; }
+      .booth-trailer-wrap { flex: 1.4; }
+    }
+    @media (max-width: 480px) {
+      .booth-images { flex-direction: column; }
+    }
+
+    /* ══════════════════════════════════════════════════════
        FAQ
     ══════════════════════════════════════════════════════ */
     #faq {
@@ -453,6 +508,7 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#stay">Stay</a></li>
       <li><a href="#getting-here">Getting Here</a></li>
+      <li><a href="#photo-booth">Photo Booth</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
@@ -485,6 +541,7 @@
         <li>August 1, 2026</li>
         <li>Dundee Lodge, Gaston Oregon</li>
         <li>Live music</li>
+        <li>Photo Booth</li>
         <li>Camping, vintage trailers &amp; lodge rooms available</li>
         <li>Free to attend — accommodations available to reserve</li>
       </ul>
@@ -495,6 +552,32 @@
 </section>
 
 <div class="divider div-warm" aria-hidden="true"></div>
+
+<!-- ════════════════════════════════════════════ PHOTO BOOTH ══ -->
+<section id="photo-booth">
+  <div class="wrap">
+    <span class="eyebrow">Strike a pose</span>
+    <h2>Photo Booth</h2>
+    <div class="ornament" style="color:var(--cream)">
+      <div class="ornament-line"></div>
+      <span class="ornament-stars">★ ★ ★</span>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="booth-layout">
+      <div class="booth-text">
+        <p>We're bringing in the <strong style="color:var(--mustard)">Snap-Wagon</strong> — a vintage photo booth out of Portland that rolls up in the most charming green trailer you've ever seen. Print your shots, text them, email them. Make memories you can actually hold.</p>
+        <a href="https://www.snapwagonpdx.com" class="booth-link" target="_blank" rel="noopener">SNAPWAGONPDX.COM →</a>
+      </div>
+      <div class="booth-images">
+        <div class="booth-logo-wrap">
+          <img src="https://www.snapwagonpdx.com/sites/default/files/Snap%20Wagon%20Logo%20Design.png" alt="Snap-Wagon Photo Booth logo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider div-dark" aria-hidden="true"></div>
 
 <!-- ════════════════════════════════════════════ STAY ══ -->
 <section id="stay">
