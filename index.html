@@ -205,6 +205,16 @@
       background-size: 22px 22px; background-color: var(--mustard);
     }
     .stay-text { font-size: 1.05rem; line-height: 1.75; max-width: 680px; margin-bottom: 2.5rem; }
+    .rooms-layout {
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem;
+      align-items: center; margin-bottom: 2.5rem;
+    }
+    .rooms-layout .rooms-text { margin-bottom: 0; max-width: none; }
+    .rooms-image-wrap { border-radius: 4px; overflow: hidden; border: 3px solid var(--brown); }
+    .rooms-image-wrap img { width: 100%; display: block; }
+    @media (max-width: 720px) {
+      .rooms-layout { grid-template-columns: 1fr; }
+    }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
     .card {
       background: var(--brown); color: var(--cream); border-radius: 4px;
@@ -660,8 +670,17 @@
 
     <p class="stay-text">
       <strong>Camping:</strong> There are so many places to camp we could never fill them. Rooms and trailers are limited and may go fast. Plenty of places if you have a camper van or car camping setup.<br><br>
-      <strong>Vintage Trailers:</strong> Be forewarned that as of last year the vintage trailers were VERY rustic. Picture the project trailer that you never got around to. No heat, no air conditioning, some battery powered lights (probably). Each one does have a bed. I hear they have clean sheets, but bringing your own bedding or sleeping bag is a good idea. Drink enough and you probably won't care. Bonus, you don't have to set up a tent so more time for fun. You get the point, don't ask for further details. I'll check them out on the 11th and update this section then.<br><br>
-      <strong>Rooms:</strong> There are only a handful of rooms. They're nice. I think most of them share a bathroom, but it's not a big area so it's close.<br><br>
+      <strong>Vintage Trailers:</strong> Be forewarned that as of last year the vintage trailers were VERY rustic. Picture the project trailer that you never got around to. No heat, no air conditioning, some battery powered lights (probably). Each one does have a bed. I hear they have clean sheets, but bringing your own bedding or sleeping bag is a good idea. Drink enough and you probably won't care. Bonus, you don't have to set up a tent so more time for fun. You get the point, don't ask for further details. I'll check them out on the 11th and update this section then.
+    </p>
+
+    <div class="rooms-layout">
+      <p class="stay-text rooms-text"><strong>Rooms:</strong> There are only a handful of rooms. They're nice. I think most of them share a bathroom, but it's not a big area so it's close.</p>
+      <div class="rooms-image-wrap">
+        <img src="assets/lodge-rooms.jpg" alt="Dundee Lodge exterior, home to the lodge rooms">
+      </div>
+    </div>
+
+    <p class="stay-text">
       Click any option below to see details and book. Text Shannon at <strong>503.201.2345</strong> and Venmo <strong>@ShannonDooley</strong> after submitting — first payment secures the spot.
     </p>
 
