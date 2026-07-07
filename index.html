@@ -205,16 +205,6 @@
       background-size: 22px 22px; background-color: var(--mustard);
     }
     .stay-text { font-size: 1.05rem; line-height: 1.75; max-width: 680px; margin-bottom: 2.5rem; }
-    .rooms-layout {
-      display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem;
-      align-items: center; margin-bottom: 2.5rem;
-    }
-    .rooms-layout .rooms-text { margin-bottom: 0; max-width: none; }
-    .rooms-image-wrap { border-radius: 4px; overflow: hidden; border: 3px solid var(--brown); }
-    .rooms-image-wrap img { width: 100%; display: block; }
-    @media (max-width: 720px) {
-      .rooms-layout { grid-template-columns: 1fr; }
-    }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
     .card {
       background: var(--brown); color: var(--cream); border-radius: 4px;
@@ -475,6 +465,8 @@
     .unit-price { font-family: var(--display); font-size: 1.6rem; font-weight: 400; font-synthesis: none; color: var(--orange); }
     .unit-card.is-reserved { opacity: 0.5; }
     .unit-card.is-reserved .unit-book-btn { opacity: 0.3; pointer-events: none; cursor: not-allowed; }
+    .unit-photo-card { padding: 0; overflow: hidden; }
+    .unit-photo-card img { width: 100%; height: 100%; min-height: 160px; object-fit: cover; display: block; }
     .unit-book-btn {
       background: var(--mustard); color: var(--brown); border: none;
       font-family: var(--display); font-size: 0.95rem; font-weight: 400; font-synthesis: none;
@@ -670,17 +662,8 @@
 
     <p class="stay-text">
       <strong>Camping:</strong> There are so many places to camp we could never fill them. Rooms and trailers are limited and may go fast. Plenty of places if you have a camper van or car camping setup.<br><br>
-      <strong>Vintage Trailers:</strong> Be forewarned that as of last year the vintage trailers were VERY rustic. Picture the project trailer that you never got around to. No heat, no air conditioning, some battery powered lights (probably). Each one does have a bed. I hear they have clean sheets, but bringing your own bedding or sleeping bag is a good idea. Drink enough and you probably won't care. Bonus, you don't have to set up a tent so more time for fun. You get the point, don't ask for further details. I'll check them out on the 11th and update this section then.
-    </p>
-
-    <div class="rooms-layout">
-      <p class="stay-text rooms-text"><strong>Rooms:</strong> There are only a handful of rooms. They're nice. I think most of them share a bathroom, but it's not a big area so it's close.</p>
-      <div class="rooms-image-wrap">
-        <img src="assets/lodge-rooms.jpg" alt="Dundee Lodge exterior, home to the lodge rooms">
-      </div>
-    </div>
-
-    <p class="stay-text">
+      <strong>Vintage Trailers:</strong> Be forewarned that as of last year the vintage trailers were VERY rustic. Picture the project trailer that you never got around to. No heat, no air conditioning, some battery powered lights (probably). Each one does have a bed. I hear they have clean sheets, but bringing your own bedding or sleeping bag is a good idea. Drink enough and you probably won't care. Bonus, you don't have to set up a tent so more time for fun. You get the point, don't ask for further details. I'll check them out on the 11th and update this section then.<br><br>
+      <strong>Rooms:</strong> There are only a handful of rooms. They're nice. I think most of them share a bathroom, but it's not a big area so it's close.<br><br>
       Click any option below to see details and book. Text Shannon at <strong>503.201.2345</strong> and Venmo <strong>@ShannonDooley</strong> after submitting — first payment secures the spot.
     </p>
 
@@ -766,11 +749,11 @@
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q">Is there a cost to attend? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">The party itself is free. Accommodations have a nightly rate — see the Stay section for details. If you'd like to contribute to the cost of the party, Shannon's Venmo is @ShannonDooley and it is always appreciated.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">The party itself is free. Accommodations have a nightly rate — see the Stay section for details. If you'd like to contribute to the cost of the party, Shannon's Venmo is @ShannonDooley.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">How do I reserve a room or trailer? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Click the accommodation card in the Stay section to see individual options and submit a booking request. Then text Shannon at 503.201.2345 and Venmo @ShannonDooley the nightly rate with your name and choice in the note. First payment secures the spot. Shannon will confirm within 24 hours.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Click the accommodation card in the Stay section to submit a booking request. Then text Shannon at 503.201.2345 and Venmo @ShannonDooley the nightly rate with your name and choice in the note. First payment secures the spot. We will confirm within 24 hours.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Can I bring a friend who isn't on the invite list? <span class="faq-icon">+</span></button>
@@ -778,7 +761,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">What time should I arrive? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Midday August 1st. Music starts whenever the bands are inspired. Don't doddle.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Midday, thinking by 1ish to get yourselves settled. Music starts whenever the bands are inspired.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">What if I can only come for part of the day? <span class="faq-icon">+</span></button>
@@ -789,12 +772,16 @@
         <div class="faq-a"><div class="faq-a-inner">Whatever you want. Who the fuck am I to tell you what to wear?</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Is there food? What about drinks? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">We're working on it — check back here closer to the date for details. There will be a bar set up. Bring your own and a little extra to share. That's the spirit(s).</div></div>
+        <button class="faq-q">Is there food? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We're working on a menu and will update this section before the event. Also, feel free to bring whatever you like.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What about drinks? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">There will be a bar set up. Bring your own and a little extra to share. That's the spirit(s).</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Will I have cell coverage? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Little to no cell service at the venue, and the wifi is limited and not something you can count on. Plan accordingly and let people know where you'll be before you head out.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">There is little to no cell service at the venue. The wifi is limited and not something you can count on. Plan accordingly and let people know where you'll be before you head out.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Can I bring my dog? <span class="faq-icon">+</span></button>
@@ -853,7 +840,7 @@
         </div>
         <div class="form-group">
           <label>Notes</label>
-          <textarea name="notes" placeholder="Anything else? Questions, words of wisdom..."></textarea>
+          <textarea name="notes" placeholder="Anything else? Questions, words of wisdom, dietary restrictions..."></textarea>
         </div>
         <button type="submit" class="form-submit-btn">Send RSVP</button>
       </form>
@@ -936,6 +923,7 @@
         { id: 'Room 3', desc: 'Lodge room with a real bed. Shared bathroom. A short stumble from the party.', reserved: true },
         { id: 'Room 4', desc: 'Comfortable room with a bed and four walls. Shared bathroom. A short stumble from the party.', reserved: true },
         { id: 'Room 5', desc: 'The last lodge room. Comfortable, warm, and as fancy as it gets out here. Private bathroom. Get real, Shannon took this already.', reserved: true },
+        { photo: true, src: 'assets/lodge-rooms.jpg', alt: 'Dundee Lodge exterior, home to the lodge rooms' },
       ]
     },
     airstream: {
@@ -957,7 +945,11 @@
     const data = UNITS[category];
     document.getElementById('unit-modal-title').textContent = data.title;
     document.getElementById('unit-modal-intro').textContent = data.intro;
-    document.getElementById('unit-grid').innerHTML = data.items.map(item => `
+    document.getElementById('unit-grid').innerHTML = data.items.map(item => item.photo ? `
+      <div class="unit-card unit-photo-card">
+        <img src="${item.src}" alt="${item.alt}">
+      </div>
+    ` : `
       <div class="unit-card${item.reserved ? ' is-reserved' : ''}">
         <div class="unit-name">${item.id}</div>
         <div class="unit-desc">${item.desc}</div>
