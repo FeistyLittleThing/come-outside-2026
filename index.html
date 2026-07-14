@@ -467,6 +467,28 @@
     .unit-card.is-reserved .unit-book-btn { opacity: 0.3; pointer-events: none; cursor: not-allowed; }
     .unit-photo-card { padding: 0; overflow: hidden; }
     .unit-photo-card img { width: 100%; height: 100%; min-height: 160px; object-fit: cover; display: block; }
+    .unit-card--photo { padding: 0; overflow: hidden; }
+    .unit-card-body { display: flex; flex-direction: column; gap: 0.65rem; flex: 1; }
+    .unit-card--photo .unit-card-body { padding: 1.4rem; }
+    .unit-slideshow { position: relative; width: 100%; aspect-ratio: 4 / 3; background: #000; overflow: hidden; }
+    .slide-img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transition: opacity .3s ease; cursor: pointer;
+    }
+    .slide-img.active { opacity: 1; }
+    .slide-nav {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+      background: rgba(61,43,31,0.55); color: var(--cream); border: none;
+      width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+      font-size: 1.1rem; line-height: 1; display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+    }
+    .slide-nav:hover { background: rgba(196,81,31,0.85); }
+    .slide-prev { left: 8px; }
+    .slide-next { right: 8px; }
+    .slide-dots { position: absolute; bottom: 8px; left: 0; right: 0; z-index: 2; display: flex; justify-content: center; gap: 5px; }
+    .slide-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(245,240,232,0.45); cursor: pointer; transition: background .15s, transform .15s; }
+    .slide-dot.active { background: var(--mustard); transform: scale(1.3); }
     .unit-book-btn {
       background: var(--mustard); color: var(--brown); border: none;
       font-family: var(--display); font-size: 0.95rem; font-weight: 400; font-synthesis: none;
@@ -904,14 +926,50 @@
       title: 'Vintage Trailers',
       price: '$100 / night',
       priceVal: 100,
-      intro: 'Six rustic trailers, each with a bed and just enough charm to make up for the lack of amenities. Bring your sleeping bag or a blanket just in case. Click a trailer to request a booking — then text Shannon and Venmo to lock it in.',
+      intro: 'Six rustic trailers, each with a bed and lacking just enough charm to accentuate the lack of amenities. Click a trailer to request a booking — then text Shannon and Venmo to lock it in.',
       items: [
-        { id: 'Trailer 1', desc: 'Sleeps 2. Pure vintage character, fully enclosed with a door and a bed. Lowering expectations isn\'t always bad. Quick stumble to and from the party.' },
-        { id: 'Trailer 2', desc: 'Sleeps 2. No heat, no AC, all charm. This one has seen some things. A bed awaits. You\'ve slept in worse places. If you sleep here you\'d be home by now.' },
-        { id: 'Trailer 3', desc: 'Sleeps 2. The project trailer someone got around to, mostly. Bed: yes. Climate control: lol. Probably better than setting up a tent.' },
-        { id: 'Trailer 4', desc: 'Sleeps 2. Vintage charm, fully enclosed with a bed, maybe a light, and no tent poles to fight with. Short stumble to the party and back.' },
-        { id: 'Trailer 5', desc: 'Sleeps 2. Battery-powered ambiance, closed space with a bed. What more do you want? The vibe is intentional.' },
-        { id: 'Trailer 6', desc: 'Sleeps 2. Last of the fleet. Rustic, charming, and entirely yours for the night. A bed, a roof, and a story.' },
+        { id: 'Trailer 1: No Name', desc: 'Sleeps 2. Pure vintage character, fully enclosed with a door and a bed. Lowering expectations isn\'t always bad. Plenty of water damage, but it shouldn\'t be raining. Quick stumble to and from the party.', photos: [
+          'assets/trailers/trailer-1/silver-bullet-1.jpg',
+          'assets/trailers/trailer-1/silver-bullet-2.jpg',
+          'assets/trailers/trailer-1/silver-bullet-3.jpg',
+          'assets/trailers/trailer-1/silver-bullet-4.jpg',
+          'assets/trailers/trailer-1/silver-bullet-5.jpg',
+        ] },
+        { id: 'Trailer 2: Aloha', desc: 'Sleeps 2. I mean.. eh. But there\'s a bed. You\'ve slept in worse places. If you sleep here you\'d be home by now.', photos: [
+          'assets/trailers/trailer-2/aloha-1.jpg',
+          'assets/trailers/trailer-2/aloha-2.jpg',
+          'assets/trailers/trailer-2/aloha-3.jpg',
+          'assets/trailers/trailer-2/aloha-4.jpg',
+        ] },
+        { id: 'Trailer 3: Low Liner', desc: 'Sleeps 2. I\'d probably sleep here after enough drinks. Likely better than setting up a tent.', photos: [
+          'assets/trailers/trailer-3/low-liner-1.jpg',
+          'assets/trailers/trailer-3/low-liner-2.jpg',
+          'assets/trailers/trailer-3/low-liner-3.jpg',
+          'assets/trailers/trailer-3/low-liner-4.jpg',
+          'assets/trailers/trailer-3/low-liner-5.jpg',
+        ] },
+        { id: 'Trailer 4: Santa Fe', desc: 'Sleeps 2. Fully enclosed with a bed. I know people who have slept here, they said it wasn\'t bad. Short stumble to the festivities.', photos: [
+          'assets/trailers/trailer-4/santa-fe-1.jpg',
+          'assets/trailers/trailer-4/santa-fe-2.jpg',
+          'assets/trailers/trailer-4/santa-fe-3.jpg',
+          'assets/trailers/trailer-4/santa-fe-4.jpg',
+          'assets/trailers/trailer-4/santa-fe-5.jpg',
+        ] },
+        { id: 'Trailer 5: Aljo', desc: 'Sleeps 2. I almost fell through the floor when I walked in so I\'m not allowing any of you to sleep here. Not sorry.', reserved: true, photos: [
+          'assets/trailers/trailer-5/aljo-1.jpg',
+          'assets/trailers/trailer-5/aljo-2.jpg',
+          'assets/trailers/trailer-5/aljo-3.jpg',
+          'assets/trailers/trailer-5/aljo-4.jpg',
+          'assets/trailers/trailer-5/aljo-5.jpg',
+        ] },
+        { id: 'Trailer 6: Roadrunner', desc: 'Sleeps 2. Last of the fleet. I think this is likely the best of the bunch. Rustic, charming, and entirely yours for the night.', photos: [
+          'assets/trailers/trailer-6/roadrunner-1.jpg',
+          'assets/trailers/trailer-6/roadrunner-2.jpg',
+          'assets/trailers/trailer-6/roadrunner-3.jpg',
+          'assets/trailers/trailer-6/roadrunner-4.jpg',
+          'assets/trailers/trailer-6/roadrunner-5.jpg',
+          'assets/trailers/trailer-6/roadrunner-6.jpg',
+        ] },
       ]
     },
     rooms: {
@@ -952,13 +1010,24 @@
         <img src="${item.src}" alt="${item.alt}">
       </div>
     ` : `
-      <div class="unit-card${item.reserved ? ' is-reserved' : ''}">
-        <div class="unit-name">${item.id}</div>
-        <div class="unit-desc">${item.desc}</div>
-        <div class="unit-price">${data.price}</div>
-        <button class="unit-book-btn" data-unit="${item.id}" data-price="${data.price}">
-          Book ${item.id}
-        </button>
+      <div class="unit-card${item.photos ? ' unit-card--photo' : ''}${item.reserved ? ' is-reserved' : ''}">
+        ${item.photos ? `
+        <div class="unit-slideshow" data-index="0">
+          ${item.photos.map((src, i) => `<img src="${src}" alt="${item.id} photo ${i + 1}" class="slide-img${i === 0 ? ' active' : ''}" data-i="${i}">`).join('')}
+          <button class="slide-nav slide-prev" aria-label="Previous photo">‹</button>
+          <button class="slide-nav slide-next" aria-label="Next photo">›</button>
+          <div class="slide-dots">
+            ${item.photos.map((_, i) => `<span class="slide-dot${i === 0 ? ' active' : ''}" data-i="${i}"></span>`).join('')}
+          </div>
+        </div>` : ''}
+        <div class="unit-card-body">
+          <div class="unit-name">${item.id}</div>
+          <div class="unit-desc">${item.desc}</div>
+          <div class="unit-price">${data.price}</div>
+          <button class="unit-book-btn" data-unit="${item.id}" data-price="${data.price}">
+            Book ${item.id}
+          </button>
+        </div>
       </div>
     `).join('');
     document.getElementById('unit-grid').querySelectorAll('.unit-book-btn').forEach(btn => {
@@ -1091,6 +1160,29 @@
         openUnitModal(card.dataset.category);
       }
     });
+  });
+
+  // ── Trailer photo slideshows ─────────────────────────────────────────
+  document.getElementById('unit-grid').addEventListener('click', e => {
+    const slideshow = e.target.closest('.unit-slideshow');
+    if (!slideshow) return;
+    const imgs = slideshow.querySelectorAll('.slide-img');
+    const dots = slideshow.querySelectorAll('.slide-dot');
+    let idx = Number(slideshow.dataset.index);
+    if (e.target.closest('.slide-next')) {
+      idx = (idx + 1) % imgs.length;
+    } else if (e.target.closest('.slide-prev')) {
+      idx = (idx - 1 + imgs.length) % imgs.length;
+    } else if (e.target.classList.contains('slide-dot')) {
+      idx = Number(e.target.dataset.i);
+    } else if (e.target.classList.contains('slide-img')) {
+      idx = (idx + 1) % imgs.length;
+    } else {
+      return;
+    }
+    slideshow.dataset.index = idx;
+    imgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
   });
 
   // ── Close modals ─────────────────────────────────────────────────────
